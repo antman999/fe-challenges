@@ -16,7 +16,7 @@ export const Route = createRootRoute({
             <nav className="flex flex-col py-2">
               {navLinks.map((sectionData) => (
                 <div key={sectionData.section} className="mb-4">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase px-4 mb-2">
+                  <h3 className="text-sm font-semibold text-gray-900 uppercase px-4 mb-2">
                     {sectionData.section}
                   </h3>
                   {sectionData.links.map((link) => (
@@ -25,9 +25,9 @@ export const Route = createRootRoute({
                         to={link.to}
                         activeOptions={{}}
                         preload="intent"
-                        className={`block text-sm py-2 px-4 text-gray-700 hover:bg-gray-100 transition-colors duration-200`}
+                        className={`block text-sm py-2 px-4 text-gray-700 hover:bg-purple-200 hover:text-purple-600 hover:font-semibold transition-colors duration-100`}
                         activeProps={{
-                          className: `font-bold text-blue-600 bg-blue-50`,
+                          className: `text-white font-semibold bg-purple-500`,
                         }}
                       >
                         {link.label}
