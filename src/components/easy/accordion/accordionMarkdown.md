@@ -2,7 +2,7 @@
 
 ## Question
 
-Build an Accordion component that displays a list of vertically stacked sections that each contain a title and content snippet. Some HTML is provided for you as example contents along with a chevron icon.
+Build an Accordion component that displays a list of vertically stacked sections that each contain a title and content snippet. It's up to you to decide how the data structure should look like.
 
 ## Requirements
 
@@ -14,10 +14,11 @@ Build an Accordion component that displays a list of vertically stacked sections
 
 ## Approach
 
-1. This component at a base level should take in an array of objects each object should have a identifier, title, content.
-2. Our initial state should be empty because we only care about opened/seen tabs.
-3. Since this is an accordion we need to handle multiple opened sections but only care if the user has opened it so one data structure that handles this is a set.
-4. Our set can be initialized by using new `Set()`.
-5. Create an onClick function called `handleToggle` this will take the identifier we need to check if the set has the id then delete it otherwise add it. Then update the state.
-6. We can `map()` over the data and create a helper variable called `isExpanded` that checks if our state has this value.
-7. Rendering should be handled by the check of `isExpanded`.
+1. This component at a base level should take in an array of objects each object should have an identifier, title, and content.
+2. Our initial state should be empty because we only care about opened/seen tabs. The component should be re-usable so all we need to think about is how to display the contents.
+3. Since this is an accordion we need to handle multiple opened sections but only care if the user has opened it. One data structure that handles this is a set. Sets can have one unique item and no more at a high level this is a boolean for multiple items.
+4. Our set can be initialized by using `new Set()` and making that our initial state.
+5. We can `map()` over the data and create a helper variable called `isExpanded` that checks if our state has this value.
+6. To be semantic our title should be a button and the content should be hidden as a `p` tag unless `isExpanded` is true.
+7. How do we handle the toggle? add an `onClick` to the button this callback function should take the id of the clicked title.
+8. The function should create a copy of state and we can check if the set has the identifier that means it's opened and we need to close it/remove it from state. Otherwise add it to state and update the entire state.
