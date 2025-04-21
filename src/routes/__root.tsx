@@ -5,14 +5,14 @@ import { navLinks } from "../../navLinks";
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="min-h-screen flex flex-col">
-        <header className="flex items-center border-b border-gray-200 bg-gray-50 p-4 gap-4">
+      <div className="h-screen flex flex-col">
+        <header className="flex items-center border-b border-gray-200 bg-gray-50 p-4 gap-4 shrink-0">
           <h1 className="text-2xl font-semibold text-gray-800">
-            React mini projects
+            <Link to="/">React mini projects</Link>
           </h1>
         </header>
-        <div className="flex flex-1">
-          <aside className="w-56 border-r border-gray-200 bg-white">
+        <div className="flex flex-1 min-h-0">
+          <aside className="w-56 border-r border-gray-200 bg-white overflow-y-auto shrink-0">
             <nav className="flex flex-col py-2">
               {navLinks.map((sectionData) => (
                 <div key={sectionData.section} className="mb-4">
@@ -25,9 +25,9 @@ export const Route = createRootRoute({
                         to={link.to}
                         activeOptions={{}}
                         preload="intent"
-                        className={`block text-sm py-2 px-4 text-gray-700 hover:bg-purple-200 hover:text-purple-600 hover:font-semibold transition-colors duration-100`}
+                        className={`block text-sm py-2 px-4 text-gray-700 hover:bg-blue-200 hover:text-blue-600 hover:font-semibold transition-colors duration-100`}
                         activeProps={{
-                          className: `text-white font-semibold bg-purple-500`,
+                          className: `text-white font-semibold bg-blue-500`,
                         }}
                       >
                         {link.label}
@@ -38,7 +38,7 @@ export const Route = createRootRoute({
               ))}
             </nav>
           </aside>
-          <main className="flex-1 p-4">
+          <main className="flex-1 p-4 overflow-y-auto">
             <Outlet />
           </main>
         </div>
