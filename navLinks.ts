@@ -5,7 +5,7 @@ export const navLinks = [
   },
   {
     section: "Easy",
-    links: [{ to: "/easy/project-1", label: "Project 1 (Easy)" }],
+    links: [{ to: "/easy/accordion", label: "Accordion" }],
   },
   {
     section: "Medium",
