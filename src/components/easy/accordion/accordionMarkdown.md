@@ -22,3 +22,7 @@ Build an Accordion component that displays a list of vertically stacked sections
 6. To be semantic our title should be a button and the content should be hidden as a `p` tag unless `isExpanded` is true.
 7. How do we handle the toggle? add an `onClick` to the button this callback function should take the id of the clicked title.
 8. The function should create a copy of state and we can check if the set has the identifier that means it's opened and we need to close it/remove it from state. Otherwise add it to state and update the entire state.
+
+## Improvements
+
+This is just a base level component that can be improved a lot. One major improvement that will be handled in the hard section will be allowing for keyboard operations and better a11y.

@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as MediumTodolistImport } from './routes/medium/todolist'
 import { Route as EasyAccordionImport } from './routes/easy/accordion'
 
 // Create/Update Routes
@@ -19,6 +20,12 @@ import { Route as EasyAccordionImport } from './routes/easy/accordion'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MediumTodolistRoute = MediumTodolistImport.update({
+  id: '/medium/todolist',
+  path: '/medium/todolist',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,6 +53,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EasyAccordionImport
       parentRoute: typeof rootRoute
     }
+    '/medium/todolist': {
+      id: '/medium/todolist'
+      path: '/medium/todolist'
+      fullPath: '/medium/todolist'
+      preLoaderRoute: typeof MediumTodolistImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -54,36 +68,41 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/medium/todolist': typeof MediumTodolistRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/medium/todolist': typeof MediumTodolistRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/medium/todolist': typeof MediumTodolistRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/easy/accordion'
+  fullPaths: '/' | '/easy/accordion' | '/medium/todolist'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/easy/accordion'
-  id: '__root__' | '/' | '/easy/accordion'
+  to: '/' | '/easy/accordion' | '/medium/todolist'
+  id: '__root__' | '/' | '/easy/accordion' | '/medium/todolist'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EasyAccordionRoute: typeof EasyAccordionRoute
+  MediumTodolistRoute: typeof MediumTodolistRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EasyAccordionRoute: EasyAccordionRoute,
+  MediumTodolistRoute: MediumTodolistRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,7 +116,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/easy/accordion"
+        "/easy/accordion",
+        "/medium/todolist"
       ]
     },
     "/": {
@@ -105,6 +125,9 @@ export const routeTree = rootRoute
     },
     "/easy/accordion": {
       "filePath": "easy/accordion.tsx"
+    },
+    "/medium/todolist": {
+      "filePath": "medium/todolist.tsx"
     }
   }
 }

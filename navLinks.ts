@@ -9,7 +9,7 @@ export const navLinks = [
   },
   {
     section: "Medium",
-    links: [{ to: "/medium/project-a", label: "Project A (Medium)" }],
+    links: [{ to: "/medium/todolist", label: "Todo list" }],
   },
   {
     section: "Hard",

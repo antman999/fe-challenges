@@ -21,7 +21,7 @@ export function AccordionComponent() {
         return (
           <div key={accordionItem.value} className="my-3 p-1">
             <button
-              className={`text-md font-semibold w-full ${isExpanded && "text-indigo-600"}`}
+              className={`text-md font-semibold w-full cursor-pointer ${isExpanded && "text-indigo-600"}`}
               onClick={() => handleSectionToggle(accordionItem.value)}
             >
               <span className="flex border-b border-b-indigo-600">
