@@ -89,7 +89,7 @@ export function TodoList() {
                   <div className="flex gap-2">
                     <button
                       onClick={() => handleCheck(todo.id)}
-                      className="text-green-500 hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded" // Added focus styles
+                      className="text-green-500 hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 rounded"
                       aria-label={`Mark task "${todo.task}" as complete`}
                     >
                       {isCompleted ? (
@@ -101,7 +101,7 @@ export function TodoList() {
 
                     <button
                       onClick={() => handleDelete(todo.id)}
-                      className="text-red-500 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded" // Added focus styles
+                      className="text-red-500 hover:text-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 rounded"
                       aria-label={`Delete task "${todo.task}"`}
                     >
                       <TrashIcon className="w-5 h-5" />{" "}
