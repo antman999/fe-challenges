@@ -13,6 +13,6 @@ export const navLinks = [
   },
   {
     section: "Hard",
-    links: [{ to: "/hard/project-x", label: "Project X (Hard)" }],
+    links: [{ to: "/hard/tictactoe", label: "Tic Tac Toe" }],
   },
 ];
