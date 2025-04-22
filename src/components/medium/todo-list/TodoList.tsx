@@ -114,7 +114,7 @@ export function TodoList() {
         </ul>
       ) : (
         <div className="text-center border border-amber-300 bg-amber-200 text-base font-semibold py-1">
-          No Todos added :(
+          No tasks added :(
         </div>
       )}
     </div>
