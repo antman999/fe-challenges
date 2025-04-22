@@ -1,10 +1,12 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { navLinks } from "../../navLinks";
+import { Analytics } from "@vercel/analytics/react";
 
 export const Route = createRootRoute({
   component: () => (
     <>
+      <Analytics />
       <div className="h-screen flex flex-col">
         <header className="flex items-center border-b border-gray-200 bg-gray-50 p-4 gap-4 shrink-0">
           <h1 className="text-2xl font-semibold text-gray-800">
