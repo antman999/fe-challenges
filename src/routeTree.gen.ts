@@ -14,6 +14,7 @@ import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as MediumTodolistImport } from './routes/medium/todolist'
 import { Route as HardTictactoeImport } from './routes/hard/tictactoe'
+import { Route as EasyFlightbookerImport } from './routes/easy/flightbooker'
 import { Route as EasyAccordionImport } from './routes/easy/accordion'
 
 // Create/Update Routes
@@ -33,6 +34,12 @@ const MediumTodolistRoute = MediumTodolistImport.update({
 const HardTictactoeRoute = HardTictactoeImport.update({
   id: '/hard/tictactoe',
   path: '/hard/tictactoe',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EasyFlightbookerRoute = EasyFlightbookerImport.update({
+  id: '/easy/flightbooker',
+  path: '/easy/flightbooker',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EasyAccordionImport
       parentRoute: typeof rootRoute
     }
+    '/easy/flightbooker': {
+      id: '/easy/flightbooker'
+      path: '/easy/flightbooker'
+      fullPath: '/easy/flightbooker'
+      preLoaderRoute: typeof EasyFlightbookerImport
+      parentRoute: typeof rootRoute
+    }
     '/hard/tictactoe': {
       id: '/hard/tictactoe'
       path: '/hard/tictactoe'
@@ -82,6 +96,7 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
@@ -89,6 +104,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
@@ -97,19 +113,31 @@ export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
+  '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/easy/accordion' | '/hard/tictactoe' | '/medium/todolist'
+  fullPaths:
+    | '/'
+    | '/easy/accordion'
+    | '/easy/flightbooker'
+    | '/hard/tictactoe'
+    | '/medium/todolist'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/easy/accordion' | '/hard/tictactoe' | '/medium/todolist'
+  to:
+    | '/'
+    | '/easy/accordion'
+    | '/easy/flightbooker'
+    | '/hard/tictactoe'
+    | '/medium/todolist'
   id:
     | '__root__'
     | '/'
     | '/easy/accordion'
+    | '/easy/flightbooker'
     | '/hard/tictactoe'
     | '/medium/todolist'
   fileRoutesById: FileRoutesById
@@ -118,6 +146,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EasyAccordionRoute: typeof EasyAccordionRoute
+  EasyFlightbookerRoute: typeof EasyFlightbookerRoute
   HardTictactoeRoute: typeof HardTictactoeRoute
   MediumTodolistRoute: typeof MediumTodolistRoute
 }
@@ -125,6 +154,7 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EasyAccordionRoute: EasyAccordionRoute,
+  EasyFlightbookerRoute: EasyFlightbookerRoute,
   HardTictactoeRoute: HardTictactoeRoute,
   MediumTodolistRoute: MediumTodolistRoute,
 }
@@ -141,6 +171,7 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/easy/accordion",
+        "/easy/flightbooker",
         "/hard/tictactoe",
         "/medium/todolist"
       ]
@@ -150,6 +181,9 @@ export const routeTree = rootRoute
     },
     "/easy/accordion": {
       "filePath": "easy/accordion.tsx"
+    },
+    "/easy/flightbooker": {
+      "filePath": "easy/flightbooker.tsx"
     },
     "/hard/tictactoe": {
       "filePath": "hard/tictactoe.tsx"

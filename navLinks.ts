@@ -5,7 +5,10 @@ export const navLinks = [
   },
   {
     section: "Easy",
-    links: [{ to: "/easy/accordion", label: "Accordion" }],
+    links: [
+      { to: "/easy/accordion", label: "Accordion" },
+      { to: "/easy/flightbooker", label: "Flight Booking tool" },
+    ],
   },
   {
     section: "Medium",
