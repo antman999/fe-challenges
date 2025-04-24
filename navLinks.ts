@@ -12,7 +12,10 @@ export const navLinks = [
   },
   {
     section: "Medium",
-    links: [{ to: "/medium/todolist", label: "Todo list" }],
+    links: [
+      { to: "/medium/todolist", label: "Todo list" },
+      { to: "/medium/slideshow", label: "Slideshow" },
+    ],
   },
   {
     section: "Hard",

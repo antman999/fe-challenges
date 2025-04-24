@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as MediumTodolistImport } from './routes/medium/todolist'
+import { Route as MediumSlideshowImport } from './routes/medium/slideshow'
 import { Route as HardTictactoeImport } from './routes/hard/tictactoe'
 import { Route as EasyFlightbookerImport } from './routes/easy/flightbooker'
 import { Route as EasyAccordionImport } from './routes/easy/accordion'
@@ -28,6 +29,12 @@ const IndexRoute = IndexImport.update({
 const MediumTodolistRoute = MediumTodolistImport.update({
   id: '/medium/todolist',
   path: '/medium/todolist',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MediumSlideshowRoute = MediumSlideshowImport.update({
+  id: '/medium/slideshow',
+  path: '/medium/slideshow',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -81,6 +88,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HardTictactoeImport
       parentRoute: typeof rootRoute
     }
+    '/medium/slideshow': {
+      id: '/medium/slideshow'
+      path: '/medium/slideshow'
+      fullPath: '/medium/slideshow'
+      preLoaderRoute: typeof MediumSlideshowImport
+      parentRoute: typeof rootRoute
+    }
     '/medium/todolist': {
       id: '/medium/todolist'
       path: '/medium/todolist'
@@ -98,6 +112,7 @@ export interface FileRoutesByFullPath {
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
+  '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
 
@@ -106,6 +121,7 @@ export interface FileRoutesByTo {
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
+  '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
 
@@ -115,6 +131,7 @@ export interface FileRoutesById {
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
+  '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
 }
 
@@ -125,6 +142,7 @@ export interface FileRouteTypes {
     | '/easy/accordion'
     | '/easy/flightbooker'
     | '/hard/tictactoe'
+    | '/medium/slideshow'
     | '/medium/todolist'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -132,6 +150,7 @@ export interface FileRouteTypes {
     | '/easy/accordion'
     | '/easy/flightbooker'
     | '/hard/tictactoe'
+    | '/medium/slideshow'
     | '/medium/todolist'
   id:
     | '__root__'
@@ -139,6 +158,7 @@ export interface FileRouteTypes {
     | '/easy/accordion'
     | '/easy/flightbooker'
     | '/hard/tictactoe'
+    | '/medium/slideshow'
     | '/medium/todolist'
   fileRoutesById: FileRoutesById
 }
@@ -148,6 +168,7 @@ export interface RootRouteChildren {
   EasyAccordionRoute: typeof EasyAccordionRoute
   EasyFlightbookerRoute: typeof EasyFlightbookerRoute
   HardTictactoeRoute: typeof HardTictactoeRoute
+  MediumSlideshowRoute: typeof MediumSlideshowRoute
   MediumTodolistRoute: typeof MediumTodolistRoute
 }
 
@@ -156,6 +177,7 @@ const rootRouteChildren: RootRouteChildren = {
   EasyAccordionRoute: EasyAccordionRoute,
   EasyFlightbookerRoute: EasyFlightbookerRoute,
   HardTictactoeRoute: HardTictactoeRoute,
+  MediumSlideshowRoute: MediumSlideshowRoute,
   MediumTodolistRoute: MediumTodolistRoute,
 }
 
@@ -173,6 +195,7 @@ export const routeTree = rootRoute
         "/easy/accordion",
         "/easy/flightbooker",
         "/hard/tictactoe",
+        "/medium/slideshow",
         "/medium/todolist"
       ]
     },
@@ -187,6 +210,9 @@ export const routeTree = rootRoute
     },
     "/hard/tictactoe": {
       "filePath": "hard/tictactoe.tsx"
+    },
+    "/medium/slideshow": {
+      "filePath": "medium/slideshow.tsx"
     },
     "/medium/todolist": {
       "filePath": "medium/todolist.tsx"
