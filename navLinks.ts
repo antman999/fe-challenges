@@ -19,6 +19,12 @@ export const navLinks = [
   },
   {
     section: "Hard",
-    links: [{ to: "/hard/tictactoe", label: "Tic Tac Toe" }],
+    links: [
+      { to: "/hard/tictactoe", label: "Tic Tac Toe" },
+      {
+        to: "/hard/duplicateInputValidation",
+        label: "Duplicate Input Validation",
+      },
+    ],
   },
 ];

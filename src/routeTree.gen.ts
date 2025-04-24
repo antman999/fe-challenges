@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as MediumTodolistImport } from './routes/medium/todolist'
 import { Route as MediumSlideshowImport } from './routes/medium/slideshow'
 import { Route as HardTictactoeImport } from './routes/hard/tictactoe'
+import { Route as HardDuplicateInputValidationImport } from './routes/hard/duplicateInputValidation'
 import { Route as EasyFlightbookerImport } from './routes/easy/flightbooker'
 import { Route as EasyAccordionImport } from './routes/easy/accordion'
 
@@ -43,6 +44,13 @@ const HardTictactoeRoute = HardTictactoeImport.update({
   path: '/hard/tictactoe',
   getParentRoute: () => rootRoute,
 } as any)
+
+const HardDuplicateInputValidationRoute =
+  HardDuplicateInputValidationImport.update({
+    id: '/hard/duplicateInputValidation',
+    path: '/hard/duplicateInputValidation',
+    getParentRoute: () => rootRoute,
+  } as any)
 
 const EasyFlightbookerRoute = EasyFlightbookerImport.update({
   id: '/easy/flightbooker',
@@ -81,6 +89,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EasyFlightbookerImport
       parentRoute: typeof rootRoute
     }
+    '/hard/duplicateInputValidation': {
+      id: '/hard/duplicateInputValidation'
+      path: '/hard/duplicateInputValidation'
+      fullPath: '/hard/duplicateInputValidation'
+      preLoaderRoute: typeof HardDuplicateInputValidationImport
+      parentRoute: typeof rootRoute
+    }
     '/hard/tictactoe': {
       id: '/hard/tictactoe'
       path: '/hard/tictactoe'
@@ -111,6 +126,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
+  '/hard/duplicateInputValidation': typeof HardDuplicateInputValidationRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
@@ -120,6 +136,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
+  '/hard/duplicateInputValidation': typeof HardDuplicateInputValidationRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
@@ -130,6 +147,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/easy/accordion': typeof EasyAccordionRoute
   '/easy/flightbooker': typeof EasyFlightbookerRoute
+  '/hard/duplicateInputValidation': typeof HardDuplicateInputValidationRoute
   '/hard/tictactoe': typeof HardTictactoeRoute
   '/medium/slideshow': typeof MediumSlideshowRoute
   '/medium/todolist': typeof MediumTodolistRoute
@@ -141,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/easy/accordion'
     | '/easy/flightbooker'
+    | '/hard/duplicateInputValidation'
     | '/hard/tictactoe'
     | '/medium/slideshow'
     | '/medium/todolist'
@@ -149,6 +168,7 @@ export interface FileRouteTypes {
     | '/'
     | '/easy/accordion'
     | '/easy/flightbooker'
+    | '/hard/duplicateInputValidation'
     | '/hard/tictactoe'
     | '/medium/slideshow'
     | '/medium/todolist'
@@ -157,6 +177,7 @@ export interface FileRouteTypes {
     | '/'
     | '/easy/accordion'
     | '/easy/flightbooker'
+    | '/hard/duplicateInputValidation'
     | '/hard/tictactoe'
     | '/medium/slideshow'
     | '/medium/todolist'
@@ -167,6 +188,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EasyAccordionRoute: typeof EasyAccordionRoute
   EasyFlightbookerRoute: typeof EasyFlightbookerRoute
+  HardDuplicateInputValidationRoute: typeof HardDuplicateInputValidationRoute
   HardTictactoeRoute: typeof HardTictactoeRoute
   MediumSlideshowRoute: typeof MediumSlideshowRoute
   MediumTodolistRoute: typeof MediumTodolistRoute
@@ -176,6 +198,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EasyAccordionRoute: EasyAccordionRoute,
   EasyFlightbookerRoute: EasyFlightbookerRoute,
+  HardDuplicateInputValidationRoute: HardDuplicateInputValidationRoute,
   HardTictactoeRoute: HardTictactoeRoute,
   MediumSlideshowRoute: MediumSlideshowRoute,
   MediumTodolistRoute: MediumTodolistRoute,
@@ -194,6 +217,7 @@ export const routeTree = rootRoute
         "/",
         "/easy/accordion",
         "/easy/flightbooker",
+        "/hard/duplicateInputValidation",
         "/hard/tictactoe",
         "/medium/slideshow",
         "/medium/todolist"
@@ -207,6 +231,9 @@ export const routeTree = rootRoute
     },
     "/easy/flightbooker": {
       "filePath": "easy/flightbooker.tsx"
+    },
+    "/hard/duplicateInputValidation": {
+      "filePath": "hard/duplicateInputValidation.tsx"
     },
     "/hard/tictactoe": {
       "filePath": "hard/tictactoe.tsx"
