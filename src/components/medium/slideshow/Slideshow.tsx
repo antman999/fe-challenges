@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { fetchPictures, type Dog } from "./dataApi";
+import { CirclePause, CirclePlay } from "lucide-react";
+
+const TIMEOUT = 2000;
 
 export function Slideshow() {
   const [data, setData] = useState<Dog[] | undefined>(undefined);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlayOn, setIsAutoPlayOn] = useState(false);
+  const interval = useRef<number | undefined>(undefined);
 
   const getImages = async () => {
     setLoading(true);
@@ -28,6 +33,14 @@ export function Slideshow() {
 
   useEffect(() => {
     getImages();
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (interval.current) {
+        clearInterval(interval.current);
+      }
+    };
   }, []);
 
   if (loading || !data) {
@@ -66,6 +79,21 @@ export function Slideshow() {
 
   const currentImage = data[currentIndex];
 
+  const handleAutoPlay = () => {
+    if (!interval.current) {
+      setIsAutoPlayOn(true);
+      interval.current = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % data.length);
+      }, TIMEOUT);
+    }
+  };
+
+  const handlePause = () => {
+    setIsAutoPlayOn(false);
+    clearInterval(interval.current);
+    interval.current = undefined;
+  };
+
   return (
     <div>
       <div className="text-center">
@@ -87,17 +115,26 @@ export function Slideshow() {
           <button
             onClick={handlePrevious}
             disabled={data.length <= 1}
-            className="py-2 px-5 bg-gray-500 text-white rounded hover:bg-gray-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 disabled:opacity-50"
+            className=" cursor-pointer py-2 px-5 bg-gray-500 text-white rounded hover:bg-gray-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50 disabled:opacity-50"
           >
             Previous
           </button>
           <button
             onClick={handleNext}
             disabled={data.length <= 1}
-            className="py-2 px-5 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 disabled:opacity-50"
+            className=" cursor-pointer py-2 px-5 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-opacity-50 disabled:opacity-50"
           >
             Next
           </button>
+          {isAutoPlayOn ? (
+            <button className="cursor-pointer" onClick={handlePause}>
+              {<CirclePause />}
+            </button>
+          ) : (
+            <button className="cursor-pointer" onClick={handleAutoPlay}>
+              {<CirclePlay />}
+            </button>
+          )}
         </div>
       </div>
     </div>
