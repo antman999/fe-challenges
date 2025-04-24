@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { ACCORDION_DATA } from "./accordionData";
 
 export function AccordionComponent() {
