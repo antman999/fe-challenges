@@ -21,7 +21,7 @@ function Input({
           flex-grow bg-transparent placeholder:text-slate-400
           text-slate-700 text-sm rounded-md px-3 py-2
           border
-          ${isDuplicate ? "border-red-600" : "border-slate-200"}
+          ${isDuplicate && value.length !== 0 ? "border-red-600" : "border-slate-200"}
         `}
       />
       {value.length >= 3 ? (
